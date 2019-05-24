@@ -1,250 +1,50 @@
-## Simple JSON Datasource - a generic backend datasource
+<a href="http://themes.3rdwavemedia.com/website-templates/appkit-landing-free-bootstrap-theme-for-developers-and-startups/" target="_blank"><img src="http://themes.3rdwavemedia.com/wp-content/uploads/2016/01/Free-Bootstrap-Theme-for-Developers-Appkit-landing.png" alt="Free Bootstrap Theme for Developers and Startups" /></a>
 
-More documentation about datasource plugins can be found in the [Docs](https://github.com/grafana/grafana/blob/master/docs/sources/plugins/developing/datasources.md).
+##Theme Details & Demo
 
-This also serves as a living example implementation of a datasource.
+**Demo:** http://themes.3rdwavemedia.com/demo/appkit-landing/
 
-Your backend needs to implement 4 urls:
+AppKit Landing is a free Bootstrap theme designed to help developers & startups to promote their products and services. The **source LESS files** are included so it’s very easy to customise the template to suite your needs.
 
- * `/` should return 200 ok. Used for "Test connection" on the datasource config page.
- * `/search` used by the find metric options on the query tab in panels.
- * `/query` should return metrics based on input.
- * `/annotations` should return annotations.
- 
-Those two urls are optional:
+We will update and improve the template based on user feedback so get in touch or leave a comment if you have any questions or suggestions. If you like the template and find it useful, **we'd appreciate your help in spreading the word on your networks**. You can also [follow us on Twitter](https://twitter.com/3rdwave_themes) to be the first to know when we release new templates and other freebies
 
- * `/tag-keys` should return tag keys for ad hoc filters.
- * `/tag-values` should return tag values for ad hoc filters.
+##Author & License
 
-## Installation
+This Bootstrap template is made by UX/UI designer [Xiaoying Riley](https://twitter.com/3rdwave_themes) for developers and is 100% FREE under the [Creative Commons Attribution 3.0 License (CC BY 3.0)](http://creativecommons.org/licenses/by/3.0/)
 
-To install this plugin using the `grafana-cli` tool:
-```
-sudo grafana-cli plugins install grafana-simple-json-datasource
-sudo service grafana-server restart
-```
-See [here](https://grafana.com/plugins/grafana-simple-json-datasource/installation) for more
-information.
+If you'd like to **use the template without the attribution**, you can check out **other license options** via the [theme website](http://themes.3rdwavemedia.com/website-templates/appkit-landing-free-bootstrap-theme-for-developers-and-startups/)
 
-### Example backend implementations
-- https://github.com/bergquist/fake-simple-json-datasource
-- https://github.com/smcquay/jsonds
-- https://github.com/ContextLogic/eventmaster
-- https://gist.github.com/linar-jether/95ff412f9d19fdf5e51293eb0c09b850 (Python/pandas backend)
+####Follow Xiaoying
 
-### Query API
+[Twitter](https://twitter.com/3rdwave_themes)
 
-Example `timeserie` request
-``` javascript
-{
-  "panelId": 1,
-  "range": {
-    "from": "2016-10-31T06:33:44.866Z",
-    "to": "2016-10-31T12:33:44.866Z",
-    "raw": {
-      "from": "now-6h",
-      "to": "now"
-    }
-  },
-  "rangeRaw": {
-    "from": "now-6h",
-    "to": "now"
-  },
-  "interval": "30s",
-  "intervalMs": 30000,
-  "targets": [
-     { "target": "upper_50", "refId": "A", "type": "timeserie" },
-     { "target": "upper_75", "refId": "B", "type": "timeserie" }
-  ],
-  "adhocFilters": [{
-    "key": "City",
-    "operator": "=",
-    "value": "Berlin"
-  }],
-  "format": "json",
-  "maxDataPoints": 550
-}
-```
+[Facebook](https://www.facebook.com/3rdwavethemes/)
 
-Example `timeserie` response
-``` javascript
-[
-  {
-    "target":"upper_75", // The field being queried for
-    "datapoints":[
-      [622,1450754160000],  // Metric value as a float , unixtimestamp in milliseconds
-      [365,1450754220000]
-    ]
-  },
-  {
-    "target":"upper_90",
-    "datapoints":[
-      [861,1450754160000],
-      [767,1450754220000]
-    ]
-  }
-]
-```
+[Dribbble](https://dribbble.com/Xiaoying)
 
-If the metric selected is `"type": "table"`, an example `table` response:
-``` json
-[
-  {
-    "columns":[
-      {"text":"Time","type":"time"},
-      {"text":"Country","type":"string"},
-      {"text":"Number","type":"number"}
-    ],
-    "rows":[
-      [1234567,"SE",123],
-      [1234567,"DE",231],
-      [1234567,"US",321]
-    ],
-    "type":"table"
-  }
-]
-```
+[Linkedin](https://uk.linkedin.com/in/xiaoying)
 
-### Annotation API
 
-The annotation request from the Simple JSON Datasource is a POST request to
-the `/annotations` endpoint in your datasource. The JSON request body looks like this:
-``` javascript
-{
-  "range": {
-    "from": "2016-04-15T13:44:39.070Z",
-    "to": "2016-04-15T14:44:39.070Z"
-  },
-  "rangeRaw": {
-    "from": "now-1h",
-    "to": "now"
-  },
-  "annotation": {
-    "name": "deploy",
-    "datasource": "Simple JSON Datasource",
-    "iconColor": "rgba(255, 96, 96, 1)",
-    "enable": true,
-    "query": "#deploy"
-  }
-}
-```
+##Latest Version
+**v1.2** - 28 Dec 2016
 
-Grafana expects a response containing an array of annotation objects in the
-following format:
+[Changelog](http://themes.3rdwavemedia.com/website-templates/appkit-landing-free-bootstrap-theme-for-developers-and-startups/?target=changelog)
 
-``` javascript
-[
-  {
-    annotation: annotation, // The original annotation sent from Grafana.
-    time: time, // Time since UNIX Epoch in milliseconds. (required)
-    title: title, // The title for the annotation tooltip. (required)
-    tags: tags, // Tags for the annotation. (optional)
-    text: text // Text for the annotation. (optional)
-  }
-]
-```
 
-Note: If the datasource is configured to connect directly to the backend, you
-also need to implement an OPTIONS endpoint at `/annotations` that responds
-with the correct CORS headers:
+##Features
 
-```
-Access-Control-Allow-Headers:accept, content-type
-Access-Control-Allow-Methods:POST
-Access-Control-Allow-Origin:*
-```
+-  Fully Responsive
+-  HTML5 + CSS3
+-  Built on Bootstrap 3
+-  6 Colour Schemes
+-  600+ FontAwesome icons
+-  **LESS** files included
+-  Compatible with all modern browsers
 
-### Search API
-
-Example request
-``` javascript
-{ target: 'upper_50' }
-```
-
-The search api can either return an array or map.
-
-Example array response
-``` javascript
-["upper_25","upper_50","upper_75","upper_90","upper_95"]
-```
-
-Example map response
-``` javascript
-[ { "text" :"upper_25", "value": 1}, { "text" :"upper_75", "value": 2} ]
-```
-
-### Tag Keys API
-
-Example request
-``` javascript
-{ }
-```
-
-The tag keys api returns:
-```javascript
-[
-    {"type":"string","text":"City"},
-    {"type":"string","text":"Country"}
-]
-```
-
-### Tag Values API
-
-Example request
-``` javascript
-{"key": "City"}
-```
-
-The tag values api returns:
-```javascript
-[
-    {'text': 'Eins!'},
-    {'text': 'Zwei'},
-    {'text': 'Drei!'}
-]
-```
-
-### Dev setup
-
-This plugin requires node 6.10.0
-
-```
-npm install -g yarn
-yarn install
-npm run build
-```
-
-### Changelog
-
-1.4.0
-
-- Support for adhoc filters:
-  - added tag-keys + tag-values api
-  - added adHocFilters parameter to query body
-
-1.3.5
-- Fix for dropdowns in query editor to allow writing template variables (broke due to change in Grafana).
-
-1.3.4
-- Adds support for With Credentials (sends grafana cookies with request) when using Direct mode
-- Fix for the typeahead component for metrics dropdown (`/search` endpoint).
-
-1.3.3
- - Adds support for basic authentication
-
-1.2.4
- - Add support returning sets in the search endpoint
-
-1.2.3
- - Allow nested templates in find metric query. #23
-
-1.2.2
- - Dont execute hidden queries
- - Template support for metrics queries
- - Template support for annotation queries
-
-### If using Grafana 2.6
-NOTE!
-for grafana 2.6 please use [this version](https://github.com/grafana/simple-json-datasource/commit/b78720f6e00c115203d8f4c0e81ccd3c16001f94)
-
-Copy the data source you want to `/public/app/plugins/datasource/`. Then restart grafana-server. The new data source should now be available in the data source type dropdown in the Add Data Source View.
+##Credits
+- [Bootstrap](http://getbootstrap.com/)
+- [FontAwesome](http://fortawesome.github.io/Font-Awesome/)
+- [Google Fonts](https://fonts.google.com/)
+- [Illustration:Minimal Office Illustrations](http://www.sketchappsources.com/free-source/1388-minimal-office-desk-illustrations-icons-sketch-freebie-resource.html)
+- [jQuery ScrollTo](http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html)
+- [Product Screenshots:AppKit Admin Theme](https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm)
