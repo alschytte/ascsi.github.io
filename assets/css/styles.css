@@ -745,8 +745,8 @@ a.btn-cta {
 }
 /* ======= Contact Section ======= */
 .contact-section {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   background: #494d55 url('../images/map.png') no-repeat center center;
   color: #fff;
 }
@@ -758,7 +758,7 @@ a.btn-cta {
   margin-bottom: 30px;
 }
 .contact-content {
-  max-width: 500px;
+  max-width: 350px;
   margin: 0 auto;
   margin-bottom: 60px;
 }
