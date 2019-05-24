@@ -1,4 +1,4 @@
-/*   
+/*
  * Template Name: Appkit Landing - Responsive Website Template for Developers
  * Version: 1.0
  * Author: Xiaoying Riley
@@ -262,7 +262,7 @@ a.btn-cta {
 }
 /* ======= Hero Section ======= */
 .hero-section {
-  min-height: 560px;
+  min-height: 460px;
   background: #494d55;
   position: relative;
 }
@@ -275,7 +275,7 @@ a.btn-cta {
 }
 .hero-section .figure-holder {
   position: relative;
-  height: 560px;
+  height: 460px;
 }
 .hero-section .figure-holder .figure-image {
   position: absolute;
@@ -284,11 +284,11 @@ a.btn-cta {
   z-index: 10;
 }
 .hero-carousel {
-  height: 560px;
+  height: 460px;
   color: #fff;
 }
 .hero-carousel .carousel-inner .item {
-  height: 560px;
+  height: 460px;
   background-position: center center;
 }
 .hero-carousel .carousel-inner .item-1 {
@@ -745,8 +745,8 @@ a.btn-cta {
 }
 /* ======= Contact Section ======= */
 .contact-section {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 70px;
+  padding-bottom: 70px;
   background: #494d55 url('../images/map.png') no-repeat center center;
   color: #fff;
 }
@@ -758,7 +758,7 @@ a.btn-cta {
   margin-bottom: 30px;
 }
 .contact-content {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   margin-bottom: 60px;
 }
