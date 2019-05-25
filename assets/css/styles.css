@@ -10,6 +10,7 @@
 body {
   font-family: 'Open Sans', arial, sans-serif;
   color: #494d55;
+  background: #26282c;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,8 +46,8 @@ a.btn {
   font-size: 14px;
   line-height: 1.5;
 }
-.btn .fa,
-a.btn .fa {
+.btn .fas,
+a.btn .fas {
   margin-right: 5px;
 }
 .btn-cta,
@@ -257,8 +258,8 @@ a.btn-cta {
 .footer a {
   color: #40babd;
 }
-.footer .fa-heart {
-  color: #EA5395;
+.footer .fa-heart-broken {
+  color: #e53935;
 }
 /* ======= Hero Section ======= */
 .hero-section {
@@ -530,7 +531,7 @@ a.btn-cta {
 .feature-nav > li {
   position: relative;
 }
-.feature-nav > li .fa {
+.feature-nav > li .fas {
   margin-right: 5px;
 }
 .feature-nav > li.active > a {
