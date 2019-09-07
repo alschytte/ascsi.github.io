@@ -313,6 +313,13 @@ a.btn-cta {
   -o-background-size: cover;
   background-size: cover;
 }
+.hero-carousel .carousel-inner .item-4 {
+  background-image: url('../images/hero-4b.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .hero-carousel .carousel-inner .heading {
   font-size: 30px;
   line-height: 1.4;
